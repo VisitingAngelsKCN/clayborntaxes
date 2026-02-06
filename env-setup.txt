@@ -1,0 +1,37 @@
+# Gmail Configuration Setup Instructions
+
+## Step 1: Create .env.local file
+Create a file named `.env.local` in your project root with the following content:
+
+```
+GMAIL_USER=dclayborn@visitingangels.com
+GMAIL_PASS=your-app-password-here
+```
+
+## Step 2: Generate Gmail App Password
+1. Go to: https://myaccount.google.com/apppasswords
+2. Sign in with your Google account
+3. Under "Select app", choose "Other"
+4. Under "Select device", choose "Mail"
+5. Click "Generate"
+6. Copy the 16-character password
+7. Replace 'your-app-password-here' with the generated password
+
+## Step 3: Restart Development Server
+After creating the .env.local file, restart your Next.js server:
+```bash
+npx next dev --port 3001
+```
+
+## Email Recipients
+Contact form submissions will be sent to:
+- gailsswalker@gmail.com
+- anitabrinson2470@gmail.com
+- dclayborn@visitingangels.com (for monitoring)
+
+## Features
+✅ Professional HTML email templates
+✅ Multiple recipient support
+✅ Urgent inquiry highlighting
+✅ Automatic reply-to setup
+✅ Error handling and logging
