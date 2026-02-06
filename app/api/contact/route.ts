@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-// Simple contact form handler without OAuth2
+// Simple contact form handler - no OAuth2 for now
 export async function POST(request: NextRequest) {
   try {
     const data = await request.json();
@@ -15,13 +15,26 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // Log the submission (for now)
+    console.log('Contact form submission:', {
+      name,
+      email,
+      phone,
+      service,
+      message,
+      timestamp: new Date().toISOString()
+    });
+    
     // TODO: Add email sending logic here
     // For now, just return success
-    console.log('Contact form submission:', data);
-    
     return NextResponse.json({
       success: true,
-      message: 'Thank you for your inquiry! We will contact you within 24 hours.'
+      message: 'Thank you for your inquiry! We will contact you within 24 hours.',
+      received: {
+        name,
+        email,
+        service
+      }
     });
     
   } catch (error) {
