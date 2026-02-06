@@ -1,0 +1,95 @@
+# Gmail OAuth2 Setup for Professional Email Integration
+
+## Why OAuth2 is Better Than App Passwords
+✅ More secure (no hardcoded passwords)
+✅ Professional appearance (sent by your domain)
+✅ Higher sending limits
+✅ Better deliverability
+✅ No "via less secure app" warnings
+
+## Step 1: Create Google Cloud Project
+1. Go to: https://console.cloud.google.com/
+2. Sign in with: dclayborn@visitingangels.com
+3. Click "Select a project" → "New Project"
+4. Project name: "Clayborn Group Website"
+5. Click "Create"
+
+## Step 2: Enable Gmail API
+1. In your project, go to "APIs & Services" → "Library"
+2. Search for "Gmail API"
+3. Click on "Gmail API"
+4. Click "Enable"
+5. Go to "APIs & Services" → "OAuth consent screen"
+6. Choose "External" → "Create"
+
+## Step 3: Configure OAuth Consent Screen
+1. **App name**: "Clayborn Group Website"
+2. **User support email**: "dclayborn@visitingangels.com"
+3. **Application logo**: (optional - upload your logo)
+4. **Application homepage**: "https://theclayborngroup.com"
+5. **Application privacy policy**: "https://theclayborngroup.com/privacy"
+6. **Application terms of service**: "https://theclayborngroup.com/terms"
+7. **Authorized domains**: "theclayborngroup.com"
+8. **Developer contact information**: "dclayborn@visitingangels.com"
+9. Click "Save and Continue"
+
+## Step 4: Configure OAuth Scopes
+1. Click "Add or Remove Scopes"
+2. Add these scopes:
+   - `https://www.googleapis.com/auth/gmail.send`
+   - `https://www.googleapis.com/auth/userinfo.email`
+3. Click "Update"
+
+## Step 5: Create Credentials
+1. Go to "APIs & Services" → "Credentials"
+2. Click "+ Create Credentials" → "OAuth client ID"
+3. **Application type**: "Web application"
+4. **Name**: "Clayborn Group Web Client"
+5. **Authorized JavaScript origins**: 
+   - "http://localhost:3001"
+   - "https://theclayborngroup.com"
+6. **Authorized redirect URIs**:
+   - "http://localhost:3001/api/auth/callback"
+   - "https://theclayborngroup.com/api/auth/callback"
+7. Click "Create"
+
+## Step 6: Get Your Credentials
+You'll receive:
+- **Client ID**: (copy this)
+- **Client Secret**: (copy this - keep secure!)
+
+## Step 7: Update Environment Variables
+Create `.env.local` with:
+
+```env
+GOOGLE_CLIENT_ID=your-client-id-here
+GOOGLE_CLIENT_SECRET=your-client-secret-here
+GOOGLE_REDIRECT_URI=http://localhost:3001/api/auth/callback
+GMAIL_USER=dclayborn@visitingangels.com
+```
+
+## Benefits of OAuth2 Setup
+✅ Professional email appearance
+✅ Higher sending quotas
+✅ Better security
+✅ No "less secure app" warnings
+✅ Scalable for production
+✅ Easy to manage permissions
+
+## Testing
+Once configured, test your contact form at:
+http://localhost:3001/contact
+
+## Production Deployment
+For production deployment:
+1. Add your production domain to authorized origins
+2. Update redirect URI to production URL
+3. Deploy to Vercel/Netlify
+4. Test production contact form
+
+## Need Help?
+If you get stuck at any step:
+1. Take a screenshot of the current screen
+2. Note the exact error message
+3. Share which step you're on
+4. I can provide specific guidance for that step
