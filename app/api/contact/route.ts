@@ -25,8 +25,9 @@ export async function POST(request: NextRequest) {
       timestamp: new Date().toISOString()
     });
     
-    // TODO: Add email service here (Resend, SendGrid, or Nodemailer)
+    // TODO: Add email service here (Resend, SendGrid, or Exchange)
     // For now, we'll store in Vercel logs and return success
+    // Email will be sent to: gailsswalker@gmail.com, anitabrinson2470@gmail.com, dclayborn@visitingangels.com
     
     return NextResponse.json({
       success: true,
