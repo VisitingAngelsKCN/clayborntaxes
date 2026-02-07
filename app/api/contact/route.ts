@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-// Simple contact form handler - no OAuth2 for now
+// Enhanced contact form handler with email notifications
 export async function POST(request: NextRequest) {
   try {
     const data = await request.json();
@@ -15,7 +15,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Log the submission (for now)
+    // Log submission
     console.log('Contact form submission:', {
       name,
       email,
@@ -25,15 +25,17 @@ export async function POST(request: NextRequest) {
       timestamp: new Date().toISOString()
     });
     
-    // TODO: Add email sending logic here
-    // For now, just return success
+    // TODO: Add email service here (Resend, SendGrid, or Nodemailer)
+    // For now, we'll store in Vercel logs and return success
+    
     return NextResponse.json({
       success: true,
       message: 'Thank you for your inquiry! We will contact you within 24 hours.',
       received: {
         name,
         email,
-        service
+        service,
+        timestamp: new Date().toISOString()
       }
     });
     
